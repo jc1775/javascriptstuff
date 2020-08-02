@@ -4,6 +4,22 @@ var valid_word_list;
 function set_valid_word_list(word_list){
     valid_word_list = word_list;
 }
+function find_similar_list(sentence, score_thresh){
+    var wordList = sentence.split(' ')
+    var scoreList = []
+    wordList.forEach( function(word) {
+        if (find_similar(word, score_thresh)[1][0] != undefined  ) {
+            scoreList.push( [find_similar(word, score_thresh)[0][0],find_similar(word, score_thresh)[1][0]])
+        } else { 
+            scoreList.push([word, 0])    
+        }
+    })
+    var newSentence = ''
+    scoreList.forEach(function(item){
+        newSentence += (item[0] + ' ' )
+    })
+    return [newSentence , scoreList]
+}
 
 function find_similar(word, score_thresh){
     var max_size = 10;
