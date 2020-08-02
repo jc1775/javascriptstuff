@@ -4,6 +4,7 @@ var valid_word_list;
 function set_valid_word_list(word_list){
     valid_word_list = word_list;
 }
+
 function find_similar_list(sentence, score_thresh){
     var wordList = sentence.split(' ')
     var scoreList = []
@@ -18,7 +19,7 @@ function find_similar_list(sentence, score_thresh){
     scoreList.forEach(function(item){
         newSentence += (item[0] + ' ' )
     })
-    return [newSentence , scoreList]
+    return newSentence
 }
 
 function find_similar(word, score_thresh){
